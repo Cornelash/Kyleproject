@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Multi-page template</title>
+	
+	<style> 
+		
+			.split{
+			width: 50%;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			overflow-x: hidden;
+			padding-top: 20 px;
+			}
+			
+			
+			
+			.left{
+			left: 0;
+			height: 80%;
+			background: #FDEBD0;
+			}
+			
+			.right {
+			right: 0;
+			height: 80%;
+			background: #FDEBD0;
+			}
+			
+			.bottom {
+			top: 71%;
+			bottom: 0;
+			width: 100%;
+			background-color: #FDEBD0;
+			}
+			
+			.orderDetails{
+			height: 60px; 
+			background-color: yellow;
+			}
+			
+			
+	</style>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+	<div data-role="header">
+		<h1>Multi-page</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Welcome!</h2>
+
+		<br>
+        Welcome to the application, login or register.
+
+		<h3>Show internal pages:</h3>
+		<p><a href="#register" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
+		<p><a href="#login" class="ui-btn ui-shadow ui-corner-all">Login</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+	<div data-role="header">
+		<h1>Two</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Two</h2>
+		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+	<div data-role="header" data-theme="b">
+		<h1>Dialog</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Popup</h2>
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
+		<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page popup -->
+
+
+
+
+
+
+<!----------------------  -------------------------------->
+<!--       LOGIN PAGE   -->
+<div data-role="page" id="login" data-theme="a">
+<div data-role="header">
+		<h1>Login page</h1>
+	</div><!-- /header -->
+
+     <div role="main" class="ui-content">
+	
+	<table align="center">  
+		<tr>
+			<td><h2>Login</h2></td>
+		</tr>
+		<tr>
+			<td>Username</td>
+			<td><input type="text" name="login_username" id="login_username" value=""></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="text" name="login_pass" id="login_pass" value=""></td>
+		</tr>
+		<tr>
+			<td colspan=2><button class="ui-btn" id="loginButton">Submit</button></td>
+	   </tr>
+	  </table>
+	</div><!-- /content -->
+</div>
+
+
+
+
+
+
+
+
+<!------------------------  ------------------------------>
+<!--       CUSTOMER PAGE   -->
+<div data-role="page" id="customer" data-theme="a">
+	<div class="column_container">
+	
+	<!----- split the top part   --------------------------->
+       <div class="split top">
+	   <div data-role="header">
+		<h1>Customer page</h1>
+      </div><!-- /header -->
+
+      <div role="main" class="ui-content">
+<!-- SPLIT LEFT -------------------------------------------------------------------->		
+		<div class="split left"> 
+						<table style="border-bottom: 1px solid black">
+							<tr>
+								<th colspan="4" style="color:#2C5BD8"><h2>PIZZA</h2></th>
+							</tr>	
+							
+							<tr >
+								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Buffalo</h4><p>mozzarella, pepperoni, ham, bacon, chicken</p></td>
+										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>16 euro<p></td>
+								<td> <button id="addBuffaloPizza" productname="buffaloPizza">Add</button> </td>
+										<td>  <button id="removeBuffaloPizza" productname="buffaloPizza">Remove</button></td>
+								<td><input type="text" name="pizza" id="buffaloPizzaQty" size="1"/></td>
+										<td><div id="myCart1"></div>    </td>
+							</tr>
+							
+							<tr >
+								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza BBQ</h4><p>chicken breast, peppers, barbecue sauce, smoked cheese</p></td>
+										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>15 euro<p></td>
+								<td> <button id="addBbqPizza" productname="bbqPizza">Add</button> </td>
+										<td>  <button id="removeBbqPizza" productname="bbqPizza">Remove</button></td>
+								<td><input type="text" name="pizza" id="bbqPizzaQty" size="1"/></td>
+										<td><div id="myCart"></div>    </td>
+							</tr>
+							<tr>
+								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Cheese</h4><p>tomatoes, mozzarella, mushrooms</p></td>
+										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>12 euro<p></td>
+								<td> <button id="addCheesePizza" productname="cheesePizza">Add</button> </td>
+										<td>  <button id="removeCheesePizza" productname="cheesePizza">Remove</button></td>
+								<td><input type="text" name="pizza" id="cheesePizzaQty" size="1"/></td>
+										<td><div id="myCart2"></div>    </td>
+							</tr>
+							<tr>
+								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Hawaii</h4><p>cooked ham, mozzarella cheese, pineapple chunks</p></td>
+										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>14 euro<p></td>
+								<td> <button id="addHawaiiPizza" productname="hawaiiPizza">Add</button> </td>
+										<td>  <button id="removeHawaiiPizza" productname="hawaiiPizza">Remove</button></td>
+								<td><input type="text" name="pizza" id="hawaiiPizzaQty" size="1"/></td>
+										<td><div id="myCart3"></div>    </td>
+							</tr>
+						</table>
+						
+<!-- Customer Comments ------>						
+			<label for="textarea-1" style="color:#2C5BD8"><b>Please enter the delivery address:</b></label>
+					    <textarea name="address" id="address" ></textarea>
+	<!--  RADIO BUTTONS     ---------------
+				<div id="radioButtons">
+					<input type="radio" name="bbq" value="s"> Small<br>
+					<input type="radio" name="bbq" value="m"> Medium<br>
+					<input type="radio" name="bbq" value="m"> Large
+				</div>
+				-->
+			
+		</div>
+ 
+ <!--   ORDER DETAILS   ---------------------------------------------------------------------------->
+ <div id="orderOptions">
+    <!---------- SPLIT RIGHT ------------------------------------------>
+				<div class="split right">
+						
+				<!-- DRINKS TABLE ----------------------------------------------------------->		
+						<table id="drinks"> 
+							<tr>
+								<th colspan="4" style="color:#2C5BD8"><h2>Drinks</h2></th>
+									<tr>
+										<td>
+											<p style="font-size:12px;"><strong><em>All our drinks are cans of 330ml</strong></em></p>
+											</td>
+											</tr>
+									</tr>
+									
+							
+							<tr >
+								<td><h5 align="center">Cola</h5></td>
+										<td width="90"><h5 align="center">Price: 1.5</h5></td>
+								<td> <button id="addProduct1" productname="cola" style="height:35px;">Add</button> </td>
+										<td>  <button id="removeProduct1" productname="cola" style="height:35px;">Remove</button></td>
+								<td><input type="text" name="cola" id="colaQty" size="1"/></td>
+										<td><div id="myCartCola"></div>    
+										</td>
+										</tr>
+							
+							<tr >
+								<td><h5 align="center">Fanta</h5></td>
+										<td width="90"><h5 align="center">Price: 1.5</h5></td>
+								<td> <button id="addProduct2" productname="fanta" style="height:35px;">Add</button> </td>
+										<td>  <button id="removeProduct2" productname="fanta" style="height:35px;">Remove</button></td>
+								<td><input type="text" name="fanta" id="fantaQty" size="1"/></td>
+										<td><div id="myCartFanta"></div>    
+										</td>
+										</tr>
+							
+							<tr >
+								<td><h5 align="center">Sprite</h5></td>
+										<td width="90"><h5 align="center">Price: 1.5</h5></td>
+								<td> <button id="addProduct3" productname="sprite" style="height:35px;">Add</button> </td>
+										<td>  <button id="removeProduct3" productname="sprite" style="height:35px;">Remove</button></td>
+								<td><input type="text" name="sprite" id="spriteQty" size="1"/></td>
+										<td><div id="myCartSprite"></div>    
+										</td>
+										</tr>		
+							
+							<tr >
+								<td><h5 align="center">Dr Pepper</h5></td>
+										<td width="90"><h5 align="center">Price: 1.5</h5></td>
+								<td> <button id="addProduct4" productname="drPepper" style="height:35px;">Add</button> </td>
+										<td>  <button id="removeProduct4" productname="drPepper" style="height:35px;">Remove</button></td>
+								<td><input type="text" name="drPepper" id="drPepperQty" size="1"/></td>
+										<td><div id="myCartDrPepper"></div>    
+										</td>
+										</tr>				
+							</table>
+				<!-- SAUCE DROPDOWN ----------------------------------------------------------->	
+											<form>
+												<label style="color:#2C5BD8"><h3>Select Sauce:</h3></label>
+													
+													<select class="sauce">
+														<option>... please select a sauce...</option>
+														<option value="bbq">BBQ Sauce</option>
+														<option value="sweeet">Sweet Chilli</option>
+														<option value="garlic">Garlic</option>
+													</select>
+											</form>	
+				</div>		
+			</div>  
+		</div>
+		</div> <!-- split the top part   --------------------------->
+	
+	<!-- SPLIT BOTTOM  ------------------------------>
+			<div class="split bottom">
+					<div class="buttonPlaceOrder" id="buttonPlaceOrder" align="center">
+						<button style="background-color:black;color:white;height:50px;width:200px;"  id="placeOrder">Place order </button>		
+					</div>
+					
+						<div class="orderDetails" id="orderDetails" style="width:500px; margin:0 auto;">
+							<h style="margin:0 auto;"><em>--- Your order details ---</em></h5><br>
+										
+						</div>
+    
+					<div class="footerButtons" id="goback" style="width:250px; margin:0 auto;">
+							
+<!--  	GO BACK BUTTON			<td><button id="goback">Go back to order  </button> </td>   -->
+								<td><button id="completeOrder" onclick="checkout()"/>Complete order </button></td>
+						</div>
+						</div>
+	</div>  <!--- bottom -->
+	</div><!-- /content / column container -->
+</div>
+
+
+
+<script>
+ //
+ //CUSTOMER PAGE
+ //
+ 
+ // template for a product
+class product {
+  constructor(name, price, qty) {
+    this.name = name
+    this.price = price;
+    this.qty = qty;
+  }
+}
+// define our products
+cheesePizza = new product("cheesePizza", 12, 0);
+bbqPizza = new product("bbqPizza", 15, 0);
+hawaiiPizza = new product("hawaiiPizza", 14, 0);
+buffaloPizza = new product("buffaloPizza", 16, 0);
+	cola = new product("cola", 1.5, 0);
+	fanta = new product("fanta", 1.5, 0);
+	sprite = new product("sprite", 1.5, 0);
+	drPepper = new product("drPepper", 1.5, 0);
+garlicSauce = new product("garlicSauce", 2, 0);
+sweetSauce	= new product("sweetSauce", 2, 0);
+bbqSauce	= new product("bbqSauce", 2, 0);
+
+var prod = [];
+prod.push(cheesePizza);
+prod.push(bbqPizza);
+prod.push(hawaiiPizza);
+prod.push(buffaloPizza);
+prod.push(cola);
+prod.push(fanta);
+prod.push(sprite);
+prod.push(drPepper);
+prod.push(garlicSauce);
+prod.push(sweetSauce);
+prod.push(bbqSauce);
+				
+								//--------------------------------------------------------
+										//define BUFFALO PIZZA 
+										$( "#addBuffaloPizza" ).click(function() {
+										if(buffaloPizza.qty < 10) { // add a little validation
+											buffaloPizza.qty = buffaloPizza.qty + 1;
+												updateCart1();  
+												}
+										});
+								$( "#removeBuffaloPizza" ).click(function() {
+										if(buffaloPizza.qty > 0)
+										buffaloPizza.qty = buffaloPizza.qty - 1;
+												updateCart1();            
+										});
+										
+
+							// function to update the cart.
+									function updateCart1(){
+									var content1 = '';								
+										if (buffaloPizza.qty >= 1) { // check to see if we should add it or not
+										content1 = content1 + " Price " + buffaloPizza.qty * buffaloPizza.price;
+								// select the buffaloPizza Qty box and add the new number of cheesePizza selected.
+									$( "#buffaloPizzaQty" ).val(buffaloPizza.qty);
+										}
+      
+							// display the content variable in the myCart div.
+									$( "#myCart1" ).html(content1);
+										if(buffaloPizza.qty == 0){    
+											$( "#myCart1" ).hide();
+											$( "#buffaloPizzaQty" ).hide();
+										} else {
+											$( "#myCart1" ).show();
+											$( "#buffaloPizzaQty" ).show();
+										}
+									}	
+				
+								$( "#viewCart1" ).click(function() {
+									updateCart1();  
+									});
+										
+										
+										
+										
+//---------------------------------------------------
+//define BBQ PIZZA
+$( "#addBbqPizza" ).click(function() {
+       if(bbqPizza.qty < 10) { // add a little validation
+          bbqPizza.qty = bbqPizza.qty + 1;
+          updateCart();  
+       }
+});
+
+
+$( "#removeBbqPizza" ).click(function() {
+		if(bbqPizza.qty > 0)
+           bbqPizza.qty = bbqPizza.qty - 1;
+           updateCart();            
+});
+
+// function to update the cart.
+function updateCart(){
+       var content = '';
+      
+      if (bbqPizza.qty >= 1) { // check to see if we should add it or not
+          content = content + " Price " + bbqPizza.qty * bbqPizza.price;
+          
+           // select the cookie Qty box and add the new number of cookies selected.
+           $( "#bbqPizzaQty" ).val(bbqPizza.qty);
+      }
+      // display the content variable in the myCart div.
+       $( "#myCart" ).html(content);
+    
+      if(bbqPizza.qty == 0){    
+          $( "#myCart" ).hide();
+          $( "#bbqPizzaQty" ).hide();
+      } else {
+		$( "#myCart" ).show();
+		$( "#bbqPizzaQty" ).show();
+      }
+}
+
+
+
+								//---------------------------------------------------------
+								// CHEESE PIZZA 
+									$( "#addCheesePizza" ).click(function() {
+										if(cheesePizza.qty < 10) { // add a little validation
+										cheesePizza.qty = cheesePizza.qty + 1;
+										updateCart2();  
+										}
+										});
+
+									$( "#removeCheesePizza" ).click(function() {
+										if(cheesePizza.qty > 0)
+										cheesePizza.qty = cheesePizza.qty - 1;
+										updateCart2();            
+										});
+
+								// function to update the cart.
+									function updateCart2(){
+									var content2 = '';
+										if (cheesePizza.qty >= 1) { // check to see if we should add it or not
+										content2 = content2 + " Price " + cheesePizza.qty * cheesePizza.price;
+								// select the cheesePizza Qty box and add the new number of cheesePizza selected.
+									$( "#cheesePizzaQty" ).val(cheesePizza.qty);
+									}
+      
+								// display the content variable in the myCart div.
+									$( "#myCart2" ).html(content2);
+										if(cheesePizza.qty == 0){    
+										$( "#myCart2" ).hide();
+										$( "#cheesePizzaQty" ).hide();
+										} else {
+											$( "#myCart2" ).show();
+											$( "#cheesePizzaQty" ).show();
+											}
+											}	
+				
+									$( "#viewCart2" ).click(function() {
+										updateCart2();  
+										});
+
+  
+//
+// Hawaii PIZZA 
+$( "#addHawaiiPizza" ).click(function() {
+       if(hawaiiPizza.qty < 10) { // add a little validation
+          hawaiiPizza.qty = hawaiiPizza.qty + 1;
+          updateCart3();  
+		}
+		});
+
+
+$( "#removeHawaiiPizza" ).click(function() {
+		if(hawaiiPizza.qty > 0)	
+			hawaiiPizza.qty = hawaiiPizza.qty - 1;
+			updateCart3();            
+			});
+
+// function to update the cart.
+function updateCart3(){
+       var content3 = '';
+      if (hawaiiPizza.qty >= 1) { // check to see if we should add it or not
+          content3 = content3 + " Price " + hawaiiPizza.qty * hawaiiPizza.price;
+          
+           // select the hawaiiPizza Qty box and add the new number of hawaiiPizza selected.
+           $( "#hawaiiPizzaQty" ).val(hawaiiPizza.qty);
+			}
+      // display the content variable in the myCart div.
+       $( "#myCart3" ).html(content3);
+		if(hawaiiPizza.qty == 0){    
+          $( "#myCart3" ).hide();
+          $( "#hawaiiPizzaQty" ).hide();
+			} else {
+			$( "#myCart3" ).show();
+			$( "#hawaiiPizzaQty" ).show();
+			}
+		}	
+$( "#viewCart3" ).click(function() {
+       updateCart3();  
+  });
+  
+  
+  
+  //---------------------------DRINKS---------------------------- 
+									$('[id^=addProduct').click(function(){
+										var p = $(this).attr('productname'); 		// find out what was clicked
+										var arrayLength = prod.length;
+											for (var i = 0; i < arrayLength; i++) { // loop over the products
+        
+										var pro = prod[i] 							// get one product at a time
+										console.log(pro.name);
+											if(p == pro.name) {
+											console.log(pro.qty);
+											pro.qty = pro.qty + 1;
+            
+										$( "#"+pro.name+"Qty" ).val(pro.qty);
+										}
+							//Do something 
+									}    
+									});
+
+									
+									$('[id^=removeProduct').click(function(){
+										var p = $(this).attr('productname');
+										//	
+									var arrayLength = prod.length;
+											for (var i = 0; i < arrayLength; i++) { // loop over the products
+									
+										var pro = prod[i] 							// get one product at a time
+										console.log(pro.name);
+											if(p == pro.name) {
+											console.log(pro.qty);
+												if(pro.qty > 0 ){
+												pro.qty = pro.qty - 1;
+											//
+										$( "#"+pro.name+"Qty" ).val(pro.qty);
+										} }
+							//Do something 
+									}    								
+									});
+
+									
+								
+										
+// ---------------------------SAUCE-------------------------------------- 										
+									$(document).ready(function(){
+										$("select.sauce").change(function(){
+										var selectedSauce = $(this).children("option:selected").val();
+							alert("You have selected the sauce - " + selectedSauce);
+										
+										});
+										});
+									
+// ------------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------------
+//ORDER DETAILS
+//
+$("#placeOrder").click(function(){
+     
+//	 var order = $("#orderDetails").html();
+//     alert(order);
+	 
+	 var addAddress = '';       //here is content
+				//adding number of products
+		addAddress = addAddress + '<b> Dont know where is showing up</b>';
+	
+	
+		
+	 var address = $("#address").val();
+		addAddress =  addAddress + '</br><b> Additional address </b></br>';
+		addAddress = addAddress + address + '</br>';	
+  //Adding the total of items
+  var total='';
+		total = '<b>Address: </b> '+ address + this.value + '</br>' + '<b>TOTAL PRICE: </b>' + (cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
+					 + cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price);
+    $("#orderDetails").html(total);
+});
+
+					//--------------------------- Check Out ----------------------
+									function checkout(){
+										var ser = '';
+										var arrayLength = prod.length;
+											for (var i = 0; i < arrayLength; i++) { // loop over the products
+        
+										var pro = prod[i] // get one product at a time
+										console.log(pro.name);
+										console.log(pro.qty);
+        
+									ser = ser + pro.name + '-' + pro.qty + ' = ';
+							//
+									}
+
+							// jQuery post and send the set.
+							var un = $( "#login_username" ).val();
+									console.log(un);
+							//need to read from db the proper user(placedby)
+									$.post( "/catchTheCart", { placedby: un, ser: ser }).done(function( data ) {
+									alert( "Check Out LOADED " + data );
+									});
+									
+									console.log(ser);
+									}
+								
+//$.post( "/backend", { type: "login", username:un, password:pw})
+//     .done(function( data ) {
+//        alert( "Data Loaded: " + data );
+
+</script>
+
+
+
+<!----------------------  -------------------------------->
+<!--       DRIVER PAGE   -->
+<div data-role="page" id="driver" data-theme="a">
+
+       <div data-role="header">
+		<h1>Driver</h1>
+      </div><!-- /header -->
+
+      <div role="main" class="ui-content">
+	
+
+
+	</div><!-- /content -->
+</div>
+
+
+
+
+
+
+
+
+
+<!----------------------  -------------------------------->
+<!--      REGISTRATION PAGE   -->
+<div data-role="page" id="register" data-theme="a">
+
+       <div data-role="header">
+		<h1 text-align=center>Register</h1>
+      </div><!-- /header -->
+
+      <div role="main" class="ui-content">
+		
+      <table align="center">  
+	  <tr>
+		<td><h2>Register</h2></td>
+		</tr>
+	  <tr>
+	  <td>Username</td>
+	  <td><input type="text" name="username" id="username" value=""></td>
+	  </tr>
+      <tr>
+	  <td>Password</td>
+	  <td><input type="text" name="pass" id="pass" value=""></td>
+	  </tr>
+ <!--       AccType <input type="text" name="acctype" id="acctype" value="">     -->
+	<tr>	
+		<td><label for="acctype">Acount Type</label></td>
+				<td>
+    				<select name="acctype" id="acctype">
+        				<option>Choose...</option>
+        			<optgroup label="Types of Account">
+            			<option value="Driver">Driver</option>
+            			<option value="Customer">Customer</option>
+            			<option value="Admin">Admin</option>  
+        			</optgroup>
+    				</select>
+			Costumer
+				</td>
+	</tr>
+       <tr>
+			<td colspan=2><button class="ui-btn" id="registerButton">Submit</button></td>
+	   </tr>
+	   </table>
+	
+	</div><!-- /content -->
+</div>
+</body>
+
+<script>
+//
+// LOGIN
+//
+$( "#loginButton" ).click(function() {
+  
+      var un = $( "#login_username" ).val();
+      console.log(un);
+      var pw = $( "#login_pass" ).val();
+      console.log(pw);
+      
+      $.post( "/backend", { type: "login", username:un, password:pw})
+     .done(function( data ) {
+        alert( "Data Loaded: " + data );
+        
+        if(data == 'Customer'){
+            window.location="/index#customer";
+        }
+        else if(data == 'Driver'){
+            window.location="/index#driver";
+        }        
+        
+       });
+  alert( "login button pressed!" );
+
+});
+</script>
+
+<script>
+//
+// REGISTER
+//
+$( "#registerButton" ).click(function() {
+  
+      var un = $( "#username" ).val();
+      console.log(un);
+      var pw = $( "#pass" ).val();
+      console.log(pw);
+      var at = $( "#acctype" ).val();
+      console.log(acctype);
+
+      $.post( "/backend", { type: "register", username:un, password:pw, acctype:at})
+     .done(function( data ) {
+			alert( "register button pressed!" );
+			alert( "Data Loaded: " + data );
+			
+			if(at == 'Customer'){
+			alert( "YOU HAVE REGISTERED AS A CUSTOMER" );
+			window.location="/index#customer";
+				}
+				else if(at == 'Driver'){
+				alert( "YOU HAVE REGISTERED AS A DRIVER" );
+				window.location="/index#driver";
+				}        
+});
+});
+</script>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
