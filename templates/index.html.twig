@@ -220,7 +220,7 @@
 						
 <!-- Customer Comments ------>						
 			<label for="textarea-1" style="color:#2C5BD8"><b>Please enter the delivery address:</b></label>
-					    <textarea name="address" id="address" ></textarea>
+					    <textarea name="addresOrder" id="address" ></textarea>
 	<!--  RADIO BUTTONS     ---------------
 				<div id="radioButtons">
 					<input type="radio" name="bbq" value="s"> Small<br>
@@ -617,12 +617,13 @@ $("#placeOrder").click(function(){
 									ser = ser + pro.name + '-' + pro.qty + ' = ';
 							//
 									}
-
+									var un = $( "#login_username" ).val();
+										console.log(un);
+									var address = $("#address").val();
+										console.log(address);
 							// jQuery post and send the set.
-							var un = $( "#login_username" ).val();
-									console.log(un);
 							//need to read from db the proper user(placedby)
-									$.post( "/catchTheCart", { placedby: un, ser: ser }).done(function( data ) {
+									$.post( "/catchTheCart", { placedby: un, ser: ser, address: address }).done(function( data ) {
 									alert( "Check Out LOADED " + data );
 									});
 									
