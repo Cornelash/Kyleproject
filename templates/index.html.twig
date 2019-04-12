@@ -9,12 +9,26 @@
 	<title>Multi-page template</title>
 	
 	<style> 
-		
+			
+			* { 
+			font-family: Comic Sans MS !important;
+			font-size: 20px, 18px, 16px, 13px;		
+			}
+			
+				.navbar{
+			display: block;
+			width: 100%;
+			position: absolute; 
+			top: 0px; 
+			left: 0px;
+			text-align: center;
+			}
+			
 			.split{
+			top: 50px;
 			width: 50%;
 			position: fixed;
 			z-index: 1;
-			top: 0;
 			overflow-x: hidden;
 			padding-top: 20 px;
 			}
@@ -34,17 +48,28 @@
 			}
 			
 			.bottom {
-			top: 71%;
+			top: 72%;
 			bottom: 0;
 			width: 100%;
 			background-color: #FDEBD0;
 			}
 			
 			.orderDetails{
-			height: 60px; 
+			height: 40px; 
 			background-color: yellow;
 			}
 			
+			
+			#topright {
+				position: absolute;
+				right: 0;
+				top: 30px;
+				display: block;
+				height: 95px;
+				width: 175px;
+				text-decoration: none;
+				}
+
 			
 	</style>
 
@@ -168,6 +193,9 @@
 <!--       CUSTOMER PAGE   -->
 <div data-role="page" id="customer" data-theme="a">
 	<div class="column_container">
+		
+		<!-- NAV BAR -------------------------->
+    					<h2 class="navbar">CUSTOMER</h2>
 	
 	<!----- split the top part   --------------------------->
        <div class="split top">
@@ -180,7 +208,7 @@
 		<div class="split left"> 
 						<table style="border-bottom: 1px solid black">
 							<tr>
-								<th colspan="4" style="color:#2C5BD8"><h2>PIZZA</h2></th>
+								<th colspan="4" style="color:#2C5BD8"><h2>Pizza</h2></th>
 							</tr>	
 							
 							<tr >
@@ -219,15 +247,10 @@
 						</table>
 						
 <!-- Customer Comments ------>						
-			<label for="textarea-1" style="color:#2C5BD8"><b>Please enter the delivery address:</b></label>
-					    <textarea name="addresOrder" id="address" ></textarea>
-	<!--  RADIO BUTTONS     ---------------
-				<div id="radioButtons">
-					<input type="radio" name="bbq" value="s"> Small<br>
-					<input type="radio" name="bbq" value="m"> Medium<br>
-					<input type="radio" name="bbq" value="m"> Large
-				</div>
-				-->
+			<label for="textarea-1" style="color:#2C5BD8"><h3><b>Please enter the delivery address:</b></h3>
+				<textarea name="addresOrder" id="address" style="height:50px;" ></textarea>
+						</label>
+					    
 			
 		</div>
  
@@ -289,15 +312,16 @@
 										</tr>				
 							</table>
 				<!-- SAUCE DROPDOWN ----------------------------------------------------------->	
-											<form>
-												<label style="color:#2C5BD8"><h3>Select Sauce:</h3></label>
+											<<form style="width:270px; float:right; margin-right: 200px">
+												<label style="color:#2C5BD8"><h3>Select Sauce:</h3>
 													
-													<select class="sauce">
+													<select class="sauce" >
 														<option>... please select a sauce...</option>
 														<option value="bbq">BBQ Sauce</option>
 														<option value="sweeet">Sweet Chilli</option>
 														<option value="garlic">Garlic</option>
 													</select>
+														
 											</form>	
 				</div>		
 			</div>  
@@ -621,9 +645,12 @@ $("#placeOrder").click(function(){
 										console.log(un);
 									var address = $("#address").val();
 										console.log(address);
+									 var total='';
+										total =(cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
+												+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price);
 							// jQuery post and send the set.
-							//need to read from db the proper user(placedby)
-									$.post( "/catchTheCart", { placedby: un, ser: ser, address: address }).done(function( data ) {
+							//need to read from db the proper fields
+									$.post( "/catchTheCart", { placedby: un, ser: ser, address: address, price: total }).done(function( data ) {
 									alert( "Check Out LOADED " + data );
 									});
 									
@@ -633,6 +660,48 @@ $("#placeOrder").click(function(){
 //$.post( "/backend", { type: "login", username:un, password:pw})
 //     .done(function( data ) {
 //        alert( "Data Loaded: " + data );
+
+//-----------------------------------------------------------------
+//------------- DRIVER PAGE ----------------------------------------
+
+$(document).ready(function () {
+    
+    // Get Location 
+    navigator.geolocation.getCurrentPosition(success, error);
+
+    function success(pos) {
+        var lat = pos.coords.latitude;
+        var long = pos.coords.longitude;
+        weather(lat, long);
+    }
+
+    function error() {
+        console.log('Location needs to be ON!');
+    }
+
+    // Call Weather
+    function weather(lat, long) {
+        var URL = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
+
+        $.getJSON(URL, function(data) {
+            updateDOM(data);
+        });
+    }
+
+    // Update Dom
+    function updateDOM(data) {
+        var city = data.name;
+        var temp = Math.round(data.main.temp_max);
+        var desc = data.weather[0].description;
+        var icon = data.weather[0].icon;
+
+        $('#city').html(city);
+        $('#temp').html(temp);
+        $('#desc').html(desc);
+        $('#icon').attr('src', icon);
+    }
+});
+
 
 </script>
 
@@ -646,10 +715,23 @@ $("#placeOrder").click(function(){
 		<h1>Driver</h1>
       </div><!-- /header -->
 
-      <div role="main" class="ui-content">
+      <div role="main" class="ui-content" style="background-color: #922B21; color: #ECF0F1">
+			
+					<!---- Top right Position  ------>
+							<div id="topright" href="#" style="text-align: center;">					
+								<div class="container" style="background-color: #FDEBD0; color: #224983">
+									<h4 id="city" style="text-align: center;" >City</h4>
+										<img src="" alt="icon" id="icon">											
+												<span>&#176;</span>
+												<h2 id="temp"><strong> temp</strong></h2> 
+												<h3 id="desc"><em>Sunny</em></h3>
+									</div>  <!-- Temperature container --->
+							</div>		<!-- top right position --->		
 	
-
-
+	<h2>Orders</h2>
+	
+	<p>ce sa faci cand nu ai ce  face</p>
+	
 	</div><!-- /content -->
 </div>
 
