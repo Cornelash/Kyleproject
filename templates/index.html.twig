@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 
@@ -7,61 +6,65 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Multi-page template</title>
-	
+
+
+
 	<style> 
 			
 			* { 
-			font-family: Comic Sans MS !important;
-			font-size: 20px, 18px, 16px, 13px;		
+			font-family: Comic Sans MS;
+			font-size: 14px;
 			}
 			
-				.navbar{
-			display: block;
+			
+			
+			.customer	{
 			width: 100%;
-			position: absolute; 
-			top: 0px; 
-			left: 0px;
-			text-align: center;
 			}
-			
+
+			header{
+				width: 100%;
+
+
+			}
 			.split{
-			top: 50px;
-			width: 50%;
-			position: fixed;
-			z-index: 1;
-			overflow-x: hidden;
-			padding-top: 20 px;
+				margin: auto;
+				height: 600px;
+				width: 100%;
+				margin: 0;
 			}
-			
-			
-			
-			.left{
-			left: 0;
-			height: 80%;
+			.left	{
+			float: left;
+			display: block;
+			padding-right: 50px;
+			width: 50%;
+			height: 600px;
 			background: #FDEBD0;
 			}
 			
 			.right {
-			right: 0;
-			height: 80%;
+				display: block;
+				height: 600px;
 			background: #FDEBD0;
+			
 			}
 			
 			.bottom {
-			top: 72%;
-			bottom: 0;
-			width: 100%;
+			clear: both;
+				display: block;
+			top: 0;
+			height: 350px;
 			background-color: #FDEBD0;
 			}
 			
 			.orderDetails{
-			height: 40px; 
+			height: 38px; 
 			background-color: yellow;
 			}
 			
 			
 			#topright {
-				position: absolute;
+				position:fixed;
 				right: 0;
 				top: 30px;
 				display: block;
@@ -82,7 +85,9 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 
-
+<!-- // ajax might not be needed -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -91,7 +96,7 @@
 <div data-role="page" id="one">
 
 	<div data-role="header">
-		<h1>Multi-page</h1>
+		<h1>Adrian's PIZZA</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
@@ -106,48 +111,12 @@
 
 	</div><!-- /content -->
 
-	<div data-role="footer" data-theme="a">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
+
 </div><!-- /page one -->
 
-<!-- Start of second page: #two -->
-<div data-role="page" id="two" data-theme="a">
 
-	<div data-role="header">
-		<h1>Two</h1>
-	</div><!-- /header -->
 
-	<div role="main" class="ui-content">
-		<h2>Two</h2>
-		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
-		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
-		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
 
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page two -->
-
-<!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
-
-	<div data-role="header" data-theme="b">
-		<h1>Dialog</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
-		<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page popup -->
 
 
 
@@ -191,31 +160,27 @@
 
 <!------------------------  ------------------------------>
 <!--       CUSTOMER PAGE   -->
-<div data-role="page" id="customer" data-theme="a">
-	<div class="column_container">
-		
-		<!-- NAV BAR -------------------------->
-    					<h2 class="navbar">CUSTOMER</h2>
+<div data-role="page" id="customer" data-theme="a"  class="customer">
 	
-	<!----- split the top part   --------------------------->
-       <div class="split top">
-	   <div data-role="header">
+		
+       
+	   <div data-role="header" class="header">
 		<h1>Customer page</h1>
       </div><!-- /header -->
 
-      <div role="main" class="ui-content">
+      <div class="split"> <!-- main frame with split windows -->
 <!-- SPLIT LEFT -------------------------------------------------------------------->		
-		<div class="split left"> 
-						<table style="border-bottom: 1px solid black">
+		<div class="left"> 
+						<table style="border-bottom: 1px solid black;">
 							<tr>
-								<th colspan="4" style="color:#2C5BD8"><h2>Pizza</h2></th>
+								<th colspan="4" style="color:#2C5BD8;"><h2>Pizza</h2></th>
 							</tr>	
 							
 							<tr >
 								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Buffalo</h4><p>mozzarella, pepperoni, ham, bacon, chicken</p></td>
 										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>16 euro<p></td>
-								<td> <button id="addBuffaloPizza" productname="buffaloPizza">Add</button> </td>
-										<td>  <button id="removeBuffaloPizza" productname="buffaloPizza">Remove</button></td>
+								<td> <button id="addBuffaloPizza" productname="buffaloPizza" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeBuffaloPizza" productname="buffaloPizza" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="pizza" id="buffaloPizzaQty" size="1"/></td>
 										<td><div id="myCart1"></div>    </td>
 							</tr>
@@ -223,41 +188,41 @@
 							<tr >
 								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza BBQ</h4><p>chicken breast, peppers, barbecue sauce, smoked cheese</p></td>
 										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>15 euro<p></td>
-								<td> <button id="addBbqPizza" productname="bbqPizza">Add</button> </td>
-										<td>  <button id="removeBbqPizza" productname="bbqPizza">Remove</button></td>
+								<td> <button id="addBbqPizza" productname="bbqPizza" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeBbqPizza" productname="bbqPizza" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="pizza" id="bbqPizzaQty" size="1"/></td>
 										<td><div id="myCart"></div>    </td>
 							</tr>
 							<tr>
 								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Cheese</h4><p>tomatoes, mozzarella, mushrooms</p></td>
 										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>12 euro<p></td>
-								<td> <button id="addCheesePizza" productname="cheesePizza">Add</button> </td>
-										<td>  <button id="removeCheesePizza" productname="cheesePizza">Remove</button></td>
+								<td> <button id="addCheesePizza" productname="cheesePizza" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeCheesePizza" productname="cheesePizza" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="pizza" id="cheesePizzaQty" size="1"/></td>
 										<td><div id="myCart2"></div>    </td>
 							</tr>
 							<tr>
 								<td width="350"><h4 align="center" style="color:#AA54F1;">Pizza Hawaii</h4><p>cooked ham, mozzarella cheese, pineapple chunks</p></td>
 										<td width="50"><h4 align="center" style="color:#AA54F1;">Price</h4><p>14 euro<p></td>
-								<td> <button id="addHawaiiPizza" productname="hawaiiPizza">Add</button> </td>
-										<td>  <button id="removeHawaiiPizza" productname="hawaiiPizza">Remove</button></td>
+								<td> <button id="addHawaiiPizza" productname="hawaiiPizza" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeHawaiiPizza" productname="hawaiiPizza" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="pizza" id="hawaiiPizzaQty" size="1"/></td>
 										<td><div id="myCart3"></div>    </td>
 							</tr>
 						</table>
 						
-<!-- Customer Comments ------>						
-			<label for="textarea-1" style="color:#2C5BD8"><h3><b>Please enter the delivery address:</b></h3>
-				<textarea name="addresOrder" id="address" style="height:50px;" ></textarea>
+<!-- Customer Comments ------>
+			<div style="width: 370px;">
+			<label for="textarea-1" style="color:#2C5BD8;"><h3><b>Please enter the delivery address:</b></h3>
+				<textarea name="addresOrder" id="location" style="height:50px; width:400px;" ></textarea>
 						</label>
-					    
+					    </div>
 			
 		</div>
  
- <!--   ORDER DETAILS   ---------------------------------------------------------------------------->
- <div id="orderOptions">
-    <!---------- SPLIT RIGHT ------------------------------------------>
-				<div class="split right">
+		<!--   ORDER DETAILS   ---------------------------------------------------------------------------->
+    		<!---------- SPLIT RIGHT ------------------------------------------>
+			<div id="orderOptions" class="right">
 						
 				<!-- DRINKS TABLE ----------------------------------------------------------->		
 						<table id="drinks"> 
@@ -265,7 +230,7 @@
 								<th colspan="4" style="color:#2C5BD8"><h2>Drinks</h2></th>
 									<tr>
 										<td>
-											<p style="font-size:12px;"><strong><em>All our drinks are cans of 330ml</strong></em></p>
+											<p style="font-size:12px;"><strong>All our drinks are cans of 330ml</strong></p>
 											</td>
 											</tr>
 									</tr>
@@ -274,8 +239,8 @@
 							<tr >
 								<td><h5 align="center">Cola</h5></td>
 										<td width="90"><h5 align="center">Price: 1.5</h5></td>
-								<td> <button id="addProduct1" productname="cola" style="height:35px;">Add</button> </td>
-										<td>  <button id="removeProduct1" productname="cola" style="height:35px;">Remove</button></td>
+								<td> <button id="addProduct1" productname="cola" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeProduct1" productname="cola" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="cola" id="colaQty" size="1"/></td>
 										<td><div id="myCartCola"></div>    
 										</td>
@@ -284,8 +249,8 @@
 							<tr >
 								<td><h5 align="center">Fanta</h5></td>
 										<td width="90"><h5 align="center">Price: 1.5</h5></td>
-								<td> <button id="addProduct2" productname="fanta" style="height:35px;">Add</button> </td>
-										<td>  <button id="removeProduct2" productname="fanta" style="height:35px;">Remove</button></td>
+								<td> <button id="addProduct2" productname="fanta" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeProduct2" productname="fanta" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="fanta" id="fantaQty" size="1"/></td>
 										<td><div id="myCartFanta"></div>    
 										</td>
@@ -294,8 +259,8 @@
 							<tr >
 								<td><h5 align="center">Sprite</h5></td>
 										<td width="90"><h5 align="center">Price: 1.5</h5></td>
-								<td> <button id="addProduct3" productname="sprite" style="height:35px;">Add</button> </td>
-										<td>  <button id="removeProduct3" productname="sprite" style="height:35px;">Remove</button></td>
+								<td> <button id="addProduct3" productname="sprite" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeProduct3" productname="sprite" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="sprite" id="spriteQty" size="1"/></td>
 										<td><div id="myCartSprite"></div>    
 										</td>
@@ -304,50 +269,51 @@
 							<tr >
 								<td><h5 align="center">Dr Pepper</h5></td>
 										<td width="90"><h5 align="center">Price: 1.5</h5></td>
-								<td> <button id="addProduct4" productname="drPepper" style="height:35px;">Add</button> </td>
-										<td>  <button id="removeProduct4" productname="drPepper" style="height:35px;">Remove</button></td>
+								<td> <button id="addProduct4" productname="drPepper" style="font-size: 12px;">Add</button> </td>
+										<td>  <button id="removeProduct4" productname="drPepper" style="font-size: 12px;">Remove</button></td>
 								<td><input type="text" name="drPepper" id="drPepperQty" size="1"/></td>
 										<td><div id="myCartDrPepper"></div>    
 										</td>
 										</tr>				
 							</table>
 				<!-- SAUCE DROPDOWN ----------------------------------------------------------->	
-											<<form style="width:270px; float:right; margin-right: 200px">
-												<label style="color:#2C5BD8"><h3>Select Sauce:</h3>
-													
-													<select class="sauce" >
-														<option>... please select a sauce...</option>
-														<option value="bbq">BBQ Sauce</option>
-														<option value="sweeet">Sweet Chilli</option>
-														<option value="garlic">Garlic</option>
-													</select>
-														
-											</form>	
+
+											<form>
+												<fieldset data-role="controlgroup" data-iconpos="left">
+													<legend style="font-size: 14px; font-weight: bold;">Select sauce:</legend>
+													<input type="checkbox" id="sauce1" name="garlicSauce" productname="garlicSauce">
+													<label for="sauce1" style="width: 200px; font-size: 12px;">Garlic Sauce</label>
+													<input type="checkbox" id="sauce2" name="bbqSauce" productname="bbqSauce">
+													<label for="sauce2" style="width: 200px; font-size: 12px;">BBQ Sauce</label>
+													<input type="checkbox" id="sauce3" name="sweetSauce" productname="sweetSauce">
+													<label for="sauce3" style="width: 200px; font-size: 12px;">Sweet Chilli Sauce</label>
+												</fieldset>
+											</form>
+
 				</div>		
-			</div>  
-		</div>
-		</div> <!-- split the top part   --------------------------->
+			</div>  <!-- end on split main frame --->
+		
 	
 	<!-- SPLIT BOTTOM  ------------------------------>
-			<div class="split bottom">
+			<div class="bottom">
 					<div class="buttonPlaceOrder" id="buttonPlaceOrder" align="center">
 						<button style="background-color:black;color:white;height:50px;width:200px;"  id="placeOrder">Place order </button>		
 					</div>
 					
-						<div class="orderDetails" id="orderDetails" style="width:500px; margin:0 auto;">
-							<h style="margin:0 auto;"><em>--- Your order details ---</em></h5><br>
+						<div class="orderDetails" id="orderDetails" style="width:350px; margin:0 auto;">
+							<h5 style="margin:0"><em>--- Your order details ---</em></h5><br>
 										
 						</div>
     
 					<div class="footerButtons" id="goback" style="width:250px; margin:0 auto;">
 							
 <!--  	GO BACK BUTTON			<td><button id="goback">Go back to order  </button> </td>   -->
-								<td><button id="completeOrder" onclick="checkout()"/>Complete order </button></td>
+								<td><button id="completeOrder" onclick="checkout()">Complete order </button></td>
 						</div>
-						</div>
-	</div>  <!--- bottom -->
-	</div><!-- /content / column container -->
-</div>
+						</div><!--- bottom -->
+	  
+	
+</div>  <!-- END OF CUSTOMER PAGE -->
 
 
 
@@ -554,7 +520,7 @@ $( "#viewCart3" ).click(function() {
   
   
   //---------------------------DRINKS---------------------------- 
-									$('[id^=addProduct').click(function(){
+									$('[id^=addProduct]').click(function(){
 										var p = $(this).attr('productname'); 		// find out what was clicked
 										var arrayLength = prod.length;
 											for (var i = 0; i < arrayLength; i++) { // loop over the products
@@ -572,7 +538,7 @@ $( "#viewCart3" ).click(function() {
 									});
 
 									
-									$('[id^=removeProduct').click(function(){
+									$('[id^=removeProduct]').click(function(){
 										var p = $(this).attr('productname');
 										//	
 									var arrayLength = prod.length;
@@ -595,13 +561,17 @@ $( "#viewCart3" ).click(function() {
 								
 										
 // ---------------------------SAUCE-------------------------------------- 										
-									$(document).ready(function(){
-										$("select.sauce").change(function(){
-										var selectedSauce = $(this).children("option:selected").val();
-							alert("You have selected the sauce - " + selectedSauce);
+								
+									
+									
+									
+									<!-- $(document).ready(function(){ -->
+										<!-- $("select.sauce").change(function(){ -->
+										<!-- var selectedSauce = $(this).children("option:selected").val(); -->
+							<!-- alert("You have selected the sauce - " + selectedSauce); -->
 										
-										});
-										});
+										<!-- }); -->
+										<!-- }); -->
 									
 // ------------------------------------------------------------------------------------- 
 // -------------------------------------------------------------------------------------
@@ -616,15 +586,44 @@ $("#placeOrder").click(function(){
 				//adding number of products
 		addAddress = addAddress + '<b> Dont know where is showing up</b>';
 	
-	
+								var dip = $("input[id^=sauce]").each(function() {
+									var p = $(this).attr('productname'); 		// find out what was clicked
+										var arrayLength = prod.length;
+											for (var i = 0; i < arrayLength; i++) {
+									if(this.checked == true) {
+										 // loop over the products
+										var pro = prod[i] 							// get one product at a time
+										console.log(pro.name);
+											if(p == pro.name) {
+											console.log(pro.qty);
+											pro.qty = 1;           
+										$( "#"+pro.name+"Qty" ).val(pro.qty);
+										}
+										
+							//IF is not checked!!!!!! 
+										}
+										if(this.checked != true) {
+										 // loop over the products
+										var pro = prod[i] 							// get one product at a time
+										console.log(pro.name);
+											if(p == pro.name) {
+											console.log(pro.qty);
+											pro.qty = 0;
+            
+										$( "#"+pro.name+"Qty" ).val(pro.qty);
+										}
+							//Do something 
+									}		
+									}
+									});
 		
-	 var address = $("#address").val();
-		addAddress =  addAddress + '</br><b> Additional address </b></br>';
+	 var address = $("#location").val();
+		addAddress =  addAddress + '</br><b> Additional location </b></br>';
 		addAddress = addAddress + address + '</br>';	
   //Adding the total of items
   var total='';
-		total = '<b>Address: </b> '+ address + this.value + '</br>' + '<b>TOTAL PRICE: </b>' + (cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
-					 + cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price);
+		total = '<b>Location: </b> '+ address + this.value + '</br>' + '<b>TOTAL PRICE: </b>' + (cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
+					 + cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
     $("#orderDetails").html(total);
 });
 
@@ -638,19 +637,19 @@ $("#placeOrder").click(function(){
 										console.log(pro.name);
 										console.log(pro.qty);
         
-									ser = ser + pro.name + '-' + pro.qty + ' = ';
+									ser = ser + pro.name + '-' + pro.qty + '=';
 							//
 									}
 									var un = $( "#login_username" ).val();
 										console.log(un);
-									var address = $("#address").val();
+									var address = $("#location").val();
 										console.log(address);
 									 var total='';
 										total =(cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
-												+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price);
+												+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
 							// jQuery post and send the set.
 							//need to read from db the proper fields
-									$.post( "/catchTheCart", { placedby: un, ser: ser, address: address, price: total }).done(function( data ) {
+									$.post( "/catchTheCart", { placedby: un, ser: ser, location: address, topay: total }).done(function( data ) {
 									alert( "Check Out LOADED " + data );
 									});
 									
@@ -660,6 +659,9 @@ $("#placeOrder").click(function(){
 //$.post( "/backend", { type: "login", username:un, password:pw})
 //     .done(function( data ) {
 //        alert( "Data Loaded: " + data );
+
+
+
 
 //-----------------------------------------------------------------
 //------------- DRIVER PAGE ----------------------------------------
@@ -703,6 +705,26 @@ $(document).ready(function () {
 });
 
 
+// DRIVER retriving the orders
+//
+//  $('#getOrders').click(function() {
+// 	var retrieveOrders = '';
+// 		total = $.get( "viewAll").done(function( data ) {
+// 									alert( "Check Out LOADED " + data );
+// 									});
+//
+//
+// 					$('#showOrders').html(retrieveOrders);
+// 					});
+//
+// //  $("#orderDetails").html(total);
+//
+
+// -----------------------------------------------------
+// ADMIN FUNCTIONS
+
+
+//   ----------- END OF ADMIN
 </script>
 
 
@@ -710,33 +732,101 @@ $(document).ready(function () {
 <!----------------------  -------------------------------->
 <!--       DRIVER PAGE   -->
 <div data-role="page" id="driver" data-theme="a">
-
        <div data-role="header">
 		<h1>Driver</h1>
       </div><!-- /header -->
-
-      <div role="main" class="ui-content" style="background-color: #922B21; color: #ECF0F1">
-			
-					<!---- Top right Position  ------>
-							<div id="topright" href="#" style="text-align: center;">					
-								<div class="container" style="background-color: #FDEBD0; color: #224983">
-									<h4 id="city" style="text-align: center;" >City</h4>
-										<img src="" alt="icon" id="icon">											
+						<div>
+						<div style="background-color: #922B21; color: #ECF0F1; height: 90px">
+										<!---- Top right Position  ------>
+										<div id="topright" href="#" style="text-align: center;">					
+											<div class="container" style="background-color: #FDEBD0; color: #224983">
+											<h4 id="city" style="text-align: center;" >City</h4>
+												<img src="" alt="icon" id="icon">											
 												<span>&#176;</span>
 												<h2 id="temp"><strong> temp</strong></h2> 
 												<h3 id="desc"><em>Sunny</em></h3>
-									</div>  <!-- Temperature container --->
-							</div>		<!-- top right position --->		
+										</div>  <!-- Temperature container --->
+										</div>		<!-- top right position --->		
 	
-	<h2>Orders</h2>
+						<h2>Orders</h2>
+						<p>Welcome driver </p>
+						</div>
 	
-	<p>ce sa faci cand nu ai ce  face</p>
-	
+		<a href="#" data-role="button" data-inline="true" data-icon="star" id="getOrders" style="margin-left: 100px">See Orders</a>
+		<div class="showOrders" id="showOrders" style="width:450px; margin:0 auto;">
+							<h5 style="margin:0"><em>-------------</em></h5><br>				
+						</div>
+
+						<form action="viewAll" method="post">
+							<input type="submit" value="Run me now!">
+						</form>
+
+
+
+							<div>
+								<h2>TESTING</h2>
+
+
+							</div>
+
 	</div><!-- /content -->
-</div>
+</div>  <!-- End Of DRIVER PAGE -->
 
 
 
+<!----------------------  -------------------------------->
+<!----------------------  -------------------------------->
+                                    <!--       Admin PAGE   -->
+                                    <div data-role="page" id="admin" data-theme="a">
+                                        <div class="container">
+
+
+
+{#                                                <h3>VIEW POSTS</h3>#}
+
+{#                                            <table class="table table-striped table-hover ">#}
+{#                                             <thead>#}
+{#                                             <tr>#}
+{#                                                    <th>ID</th>#}
+{#                                                    <th>PlacedBy</th >#}
+{#                                                    <th>Summary</th>#}
+{#                                                    <th>Destination</th>#}
+{#                                                    <th>total price</th>#}
+{#                                             </tr>#}
+
+
+{#                                             </thead>#}
+
+{#                                                <tbody>#}
+
+{#                                                    <tr>#}
+{#														{%   for orders in products %}#}
+{#                                                        <td>{{ product.placedby }}</td>#}
+{#														{% endfor %}#}
+{#                                                        <td>{{ products.placedby }}</td>#}
+{#                                                        <td>{{ post.description }}</td>#}
+{#                                                        <td >{{ post.category }}</td >#}
+{#                                                        <td >#}
+{#                                                            <a href="" class="btn btn-primary">View</a>#}
+{#                                                            <a href="" class="btn btn-success">Edit</a>#}
+{#                                                            <a href="" class="btn btn-danger">Delete</a>#}
+{#                                                        </td>#}
+{#                                                    </tr>#}
+
+
+{#                                                </tbody>#}
+{#                                            </table>#}
+
+{#                                        </div>#}
+
+
+
+
+
+
+
+                                    </div>  <!-- END OF ADMIN PAGE    -->
+<!----------------------------------  ------------------------------------->
 
 
 
@@ -788,7 +878,7 @@ $(document).ready(function () {
 	</div><!-- /content -->
 </div>
 </body>
-
+{#{% endblock %}#}
 <script>
 //
 // LOGIN
@@ -809,8 +899,10 @@ $( "#loginButton" ).click(function() {
         }
         else if(data == 'Driver'){
             window.location="/index#driver";
-        }        
-        
+        }
+        else if(data == 'Admin') {
+            window.location = "/post";
+        }
        });
   alert( "login button pressed!" );
 
@@ -842,26 +934,14 @@ $( "#registerButton" ).click(function() {
 				else if(at == 'Driver'){
 				alert( "YOU HAVE REGISTERED AS A DRIVER" );
 				window.location="/index#driver";
-				}        
-});
+				}
+                else if(at == 'Admin'){
+                alert( "YOU HAVE REGISTERED AS A ADMIN" );
+                window.location="/post";
+                }
+     });
 });
 </script>
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </html>
