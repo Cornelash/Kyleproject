@@ -1,0 +1,38 @@
+{{ include('admin/navbar.html.twig') }}
+
+<div class="container">
+    <h3>VIEW POSTS</h3>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>PlacedBy</th >
+            <th>Summary</th>
+            <th>Destination</th>
+            <th>TOTAL PRICE</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {%  for post in itemsPost %}
+             <tr>
+                 <td>{{ post.id}}</td>
+                 <td>{{ post.placedby }}</td>
+                 <td>{{ post.details }}</td>
+                 <td>{{ post.location }}</td >
+                 <td>{{ post.topay }}</td>
+                 <td >
+                    <th><a href="post/view/{{ post.id}}" class="btn btn-primary btn-sm">View</a></th>
+                    <th><a href="post/update/{{ post.id}}" class="btn btn-success btn-sm">Edit</a></th>
+                    <th><a href="post/delete/{{ post.id}}" class="btn btn-danger">Delete</a></th>
+                </td>
+             </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+

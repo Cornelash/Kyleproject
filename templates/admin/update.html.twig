@@ -1,0 +1,12 @@
+{{ include('admin/navbar.html.twig') }}
+
+<div class="container">
+    <a href="{{ absolute_url(asset('')) }}post" class="btn btn-primary">Back</a>
+    <h3>EDIT/UPDATE THE ORDER</h3>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
+
+
+{#  href="{{ absolute_url(asset('')) }} #}
