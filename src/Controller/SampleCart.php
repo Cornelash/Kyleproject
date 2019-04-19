@@ -14,7 +14,7 @@ class SampleCart extends AbstractController
      */
     public function index()
     {
-        return $this->render('cart/cart.html.twig', [
+        return $this->render('index.html.twig', [
             'controller_name' => 'RegisterController',
         ]);
     }

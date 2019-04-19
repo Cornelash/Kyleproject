@@ -45,21 +45,24 @@ class viewAll extends AbstractController
                 $item = explode('-',$record); // break it apart based on the dash.
                 
                 $output .= 'Item: ' . $item[0]. ' ';
-                $output .='Qty: ' . $item[1] . ' <br>';
-            
-            
-            
+                $output .='Qty: ' . $item[0] . ' <br>';
+           
         }
            
            
            
            $output .= '</td>'; // raw serialized data
-           
+						
+										$output .= '<td>' . '*******' . '</td>';
+						$output .= '<td>' . $pro->getLocation() . '</td>';					
+										$output .= '<td>' . '*******' . '</td>';	
+						$output .= '<td>' .	$pro->getTopay() . '</td>';
+							
            // add here another column.
            
            $output .= '</tr>';        
-           
-           
+			
+					 
            
         
        }
@@ -68,7 +71,7 @@ class viewAll extends AbstractController
       $output .= '</table>';
 
           return new Response(
-            'all ok' . $output
+            'COSTUMERS ORDERS' . $output
         );
         
     }
