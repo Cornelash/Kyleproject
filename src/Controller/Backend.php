@@ -52,18 +52,23 @@ class Backend extends AbstractController
             // get the username and password
             $username = $request->request->get('username', 'none');
             $password = $request->request->get('password', 'none');
-            
+
              $repo = $this->getDoctrine()->getRepository(Login::class); // the type of the entity
-             
-             $person = $repo->findOneBy(['username' => $username,'password' => $password,]);
-                
-                 return new Response(
-                    $person->getAcctype()
-                    );               
-    		
+
+//             $person = $repo->findOneBy(['username' => $username,'password' => $password,]);
+                    if ($person = $repo->findOneBy(['username' => $username,'password' => $password,])) {
+                        return new Response(
+                            $person->getAcctype()
+                        );
+                    }
+                    else{
+                        return new Response ('Invalid User');
+
+                    }
 				   // redirects us to the acctype page
 				   //      'login' .var_dump($person)      used more for testing
                                   
-        }     
+        }
+
     }  
 }
