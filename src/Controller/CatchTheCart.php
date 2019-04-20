@@ -22,7 +22,7 @@ class CatchTheCart extends AbstractController
         $ser = $request->request->get('ser', 'this is the default');
         $location = $request->request->get('location', 'this is the default');
 		$topay = $request->request->get('topay', 'this is the default');
-
+		$time = $request->request->get('time', 'this is the default');
       
       // Break apart the serialized order
       // $data = explode('=', 'cookies-2=pizza-2='); <--- this is what order details look like
@@ -48,7 +48,8 @@ class CatchTheCart extends AbstractController
         $order->setDetails(substr($ser, 0, -1));
 		$order->setLocation($location);
 		$order->setTopay($topay);
-      
+		$order->setTime($time);
+		
         $entityManager->persist($order);
 
         // actually executes the queries (i.e. the INSERT query)

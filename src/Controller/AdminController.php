@@ -40,13 +40,13 @@ class AdminController extends AbstractController
         public function viewPostAction($id){
             $repository = $this->getDoctrine()->getRepository(Orders::class);
 
-            $items = $repository->find($id);
+            $post = $repository->find($id);
 
 //                    echo '<pre>';
-//                    print_r($items);
+//                    print_r($post);
 //                    echo '</pre>';
 //                    exit();
-            return $this->render("admin/view.html.twig", ['itemView' => $items]);
+            return $this->render("admin/view.html.twig", ['post' => $post]);
 
         }
 

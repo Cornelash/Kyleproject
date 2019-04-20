@@ -36,6 +36,11 @@ class Orders
      */
     private $topay;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Time;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Orders
     public function setTopay(string $topay): self
     {
         $this->topay = $topay;
+
+        return $this;
+    }
+
+    public function getTime(): ?string
+    {
+        return $this->Time;
+    }
+
+    public function setTime(string $Time): self
+    {
+        $this->Time = $Time;
 
         return $this;
     }
