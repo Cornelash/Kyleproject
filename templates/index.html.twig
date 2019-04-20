@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Multi-page template</title>
+	<title>Adrian's WEB</title>
 
 
 
@@ -419,6 +419,10 @@ $( "#loginButton" ).click(function() {
         else if(data == 'Admin') {
             window.location = "/post";
         }
+        else {
+			alert( "Please LOGIN or REGISTER" );
+			window.location="/index";
+		}
        });
   alert( "login button pressed!" );
 
@@ -446,7 +450,7 @@ $( "#registerButton" ).click(function() {
 			
 			if(at == 'Customer'){
 			alert( "YOU HAVE REGISTERED AS A CUSTOMER" );
-			window.location="/index#customer";
+			window.location="/index#login";
 				}
 				else if(at == 'Driver'){
 				alert( "YOU HAVE REGISTERED AS A DRIVER" );
