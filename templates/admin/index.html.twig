@@ -10,7 +10,8 @@
             <th>PlacedBy</th >
             <th>Summary</th>
             <th>Destination</th>
-            <th>TOTAL PRICE</th>
+            <th>Total Price</th>
+            <th>Time</th>
         </tr>
         </thead>
 
@@ -22,10 +23,11 @@
                  <td>{{ post.details }}</td>
                  <td>{{ post.location }}</td >
                  <td>{{ post.topay }}</td>
+                 <td>{{ post.time }}</td>
                  <td >
                     <th><a href="post/view/{{ post.id}}" class="btn btn-primary btn-sm">View</a></th>
                     <th><a href="post/update/{{ post.id}}" class="btn btn-success btn-sm">Edit</a></th>
-                    <th><a href="post/delete/{{ post.id}}" class="btn btn-danger">Delete</a></th>
+                    <th><a href="post/delete/{{ post.id}}" class="btn btn-danger btn-sm">Delete</a></th>
                 </td>
              </tr>
             {% endfor %}

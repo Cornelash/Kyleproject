@@ -90,8 +90,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
-<body>
 
+
+<body><!---------------- Start of html ------------------>
+<!---------------------   INTRO PAGE   ----------------------------------------->
 <!-- Start of first page: #one -->
 <div data-role="page" id="one">
 
@@ -103,7 +105,7 @@
 		<h2>Welcome!</h2>
 
 		<br>
-        Welcome to the application, login or register.
+        Welcome my application, please login or register!
 
 		<h3>Show internal pages:</h3>
 		<p><a href="#register" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
@@ -120,10 +122,8 @@
 
 
 
-
-
-
-<!----------------------  -------------------------------->
+<!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
 <!--       LOGIN PAGE   -->
 <div data-role="page" id="login" data-theme="a">
 <div data-role="header">
@@ -149,7 +149,58 @@
 	   </tr>
 	  </table>
 	</div><!-- /content -->
+</div> <!---------- END OF LOGIN PAGE   ------------------------------>
+
+
+
+
+
+<!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
+<!--      REGISTRATION PAGE   -->
+<div data-role="page" id="register" data-theme="a">
+
+	<div data-role="header">
+		<h1 text-align=center>Register</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+
+		<table align="center">
+			<tr>
+				<td><h2>Register</h2></td>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td><input type="text" name="username" id="username" value=""></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="text" name="pass" id="pass" value=""></td>
+			</tr>
+			<!--       AccType <input type="text" name="acctype" id="acctype" value="">     -->
+						<tr>
+							<td><label for="acctype">Acount Type</label>
+							</td>
+								<td>
+					    				<select name="acctype" id="acctype">
+						        				<option>Choose...</option>
+						        			<optgroup label="Types of Account">
+							            			<option value="Driver">Driver</option>
+							            			<option value="Customer">Customer</option>
+							            			<option value="Admin">Admin</option>  
+							        			</optgroup>
+						    				</select>
+								</td>
+						</tr>
+			<tr>
+				<td colspan=2><button class="ui-btn" id="registerButton">Submit</button></td>
+			</tr>
+		</table>
+
+	</div><!-- /content -->
 </div>
+</div><!----  END OF REGISTRATION PAGE ---------------->
 
 
 
@@ -158,7 +209,8 @@
 
 
 
-<!------------------------  ------------------------------>
+<!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
 <!--       CUSTOMER PAGE   -->
 <div data-role="page" id="customer" data-theme="a"  class="customer">
 	
@@ -223,7 +275,8 @@
 		<!--   ORDER DETAILS   ---------------------------------------------------------------------------->
     		<!---------- SPLIT RIGHT ------------------------------------------>
 			<div id="orderOptions" class="right">
-						
+
+
 				<!-- DRINKS TABLE ----------------------------------------------------------->		
 						<table id="drinks"> 
 							<tr>
@@ -298,591 +351,54 @@
 			<div class="bottom">
 					<div class="buttonPlaceOrder" id="buttonPlaceOrder" align="center">
 						<button style="background-color:black;color:white;height:50px;width:200px;"  id="placeOrder">Place order </button>		
-					</div>
+
 					
 						<div class="orderDetails" id="orderDetails" style="width:350px; margin:0 auto;">
 							<h5 style="margin:0"><em>--- Your order details ---</em></h5><br>
 										
 						</div>
     
-					<div class="footerButtons" id="goback" style="width:250px; margin:0 auto;">
-							
-<!--  	GO BACK BUTTON			<td><button id="goback">Go back to order  </button> </td>   -->
-								<td><button id="completeOrder" onclick="checkout()">Complete order </button></td>
+						<div class="footerButtons" id="goback" style="width:250px; margin:0 auto;">
+							<a href="#popupBasic"  id="completeOrder" onclick="checkout()" data-rel="popup" data-role="button" data-inline="true" data-transition="pop">Complete order</a>
+							<div data-role="popup" id="popupBasic">
+								<p >Yor order has been placed</p>
+								<button style="background-color: aqua"><a href="{{ absolute_url(asset('')) }}index" >OK </a></button>
+							</div>   
 						</div>
+					</div>
+
+						<td><button><a href="{{ absolute_url(asset('')) }}index" >Go back to main page</a></button></td>
+
+					</div>
 						</div><!--- bottom -->
 	  
 	
 </div>  <!-- END OF CUSTOMER PAGE -->
 
+<!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
+<!----------------------------------  ADMIN PAGE IS SEPARATELY       ------------------->
+
+
+<!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
+<!---------------------------------      DRIVER PAGE IS SEPARATELY   -------------------->
+
+</body>  <!---------------- End of html ------------------>
+
+
+
+
+
+
+
+
 
 
 <script>
- //
- //CUSTOMER PAGE
- //
- 
- // template for a product
-class product {
-  constructor(name, price, qty) {
-    this.name = name
-    this.price = price;
-    this.qty = qty;
-  }
-}
-// define our products
-cheesePizza = new product("cheesePizza", 12, 0);
-bbqPizza = new product("bbqPizza", 15, 0);
-hawaiiPizza = new product("hawaiiPizza", 14, 0);
-buffaloPizza = new product("buffaloPizza", 16, 0);
-	cola = new product("cola", 1.5, 0);
-	fanta = new product("fanta", 1.5, 0);
-	sprite = new product("sprite", 1.5, 0);
-	drPepper = new product("drPepper", 1.5, 0);
-garlicSauce = new product("garlicSauce", 2, 0);
-sweetSauce	= new product("sweetSauce", 2, 0);
-bbqSauce	= new product("bbqSauce", 2, 0);
-
-var prod = [];
-prod.push(cheesePizza);
-prod.push(bbqPizza);
-prod.push(hawaiiPizza);
-prod.push(buffaloPizza);
-prod.push(cola);
-prod.push(fanta);
-prod.push(sprite);
-prod.push(drPepper);
-prod.push(garlicSauce);
-prod.push(sweetSauce);
-prod.push(bbqSauce);
-				
-								//--------------------------------------------------------
-										//define BUFFALO PIZZA 
-										$( "#addBuffaloPizza" ).click(function() {
-										if(buffaloPizza.qty < 10) { // add a little validation
-											buffaloPizza.qty = buffaloPizza.qty + 1;
-												updateCart1();  
-												}
-										});
-								$( "#removeBuffaloPizza" ).click(function() {
-										if(buffaloPizza.qty > 0)
-										buffaloPizza.qty = buffaloPizza.qty - 1;
-												updateCart1();            
-										});
-										
-
-							// function to update the cart.
-									function updateCart1(){
-									var content1 = '';								
-										if (buffaloPizza.qty >= 1) { // check to see if we should add it or not
-										content1 = content1 + " Price " + buffaloPizza.qty * buffaloPizza.price;
-								// select the buffaloPizza Qty box and add the new number of cheesePizza selected.
-									$( "#buffaloPizzaQty" ).val(buffaloPizza.qty);
-										}
-      
-							// display the content variable in the myCart div.
-									$( "#myCart1" ).html(content1);
-										if(buffaloPizza.qty == 0){    
-											$( "#myCart1" ).hide();
-											$( "#buffaloPizzaQty" ).hide();
-										} else {
-											$( "#myCart1" ).show();
-											$( "#buffaloPizzaQty" ).show();
-										}
-									}	
-				
-								$( "#viewCart1" ).click(function() {
-									updateCart1();  
-									});
-										
-										
-										
-										
-//---------------------------------------------------
-//define BBQ PIZZA
-$( "#addBbqPizza" ).click(function() {
-       if(bbqPizza.qty < 10) { // add a little validation
-          bbqPizza.qty = bbqPizza.qty + 1;
-          updateCart();  
-       }
-});
-
-
-$( "#removeBbqPizza" ).click(function() {
-		if(bbqPizza.qty > 0)
-           bbqPizza.qty = bbqPizza.qty - 1;
-           updateCart();            
-});
-
-// function to update the cart.
-function updateCart(){
-       var content = '';
-      
-      if (bbqPizza.qty >= 1) { // check to see if we should add it or not
-          content = content + " Price " + bbqPizza.qty * bbqPizza.price;
-          
-           // select the cookie Qty box and add the new number of cookies selected.
-           $( "#bbqPizzaQty" ).val(bbqPizza.qty);
-      }
-      // display the content variable in the myCart div.
-       $( "#myCart" ).html(content);
-    
-      if(bbqPizza.qty == 0){    
-          $( "#myCart" ).hide();
-          $( "#bbqPizzaQty" ).hide();
-      } else {
-		$( "#myCart" ).show();
-		$( "#bbqPizzaQty" ).show();
-      }
-}
-
-
-
-								//---------------------------------------------------------
-								// CHEESE PIZZA 
-									$( "#addCheesePizza" ).click(function() {
-										if(cheesePizza.qty < 10) { // add a little validation
-										cheesePizza.qty = cheesePizza.qty + 1;
-										updateCart2();  
-										}
-										});
-
-									$( "#removeCheesePizza" ).click(function() {
-										if(cheesePizza.qty > 0)
-										cheesePizza.qty = cheesePizza.qty - 1;
-										updateCart2();            
-										});
-
-								// function to update the cart.
-									function updateCart2(){
-									var content2 = '';
-										if (cheesePizza.qty >= 1) { // check to see if we should add it or not
-										content2 = content2 + " Price " + cheesePizza.qty * cheesePizza.price;
-								// select the cheesePizza Qty box and add the new number of cheesePizza selected.
-									$( "#cheesePizzaQty" ).val(cheesePizza.qty);
-									}
-      
-								// display the content variable in the myCart div.
-									$( "#myCart2" ).html(content2);
-										if(cheesePizza.qty == 0){    
-										$( "#myCart2" ).hide();
-										$( "#cheesePizzaQty" ).hide();
-										} else {
-											$( "#myCart2" ).show();
-											$( "#cheesePizzaQty" ).show();
-											}
-											}	
-				
-									$( "#viewCart2" ).click(function() {
-										updateCart2();  
-										});
-
-  
-//
-// Hawaii PIZZA 
-$( "#addHawaiiPizza" ).click(function() {
-       if(hawaiiPizza.qty < 10) { // add a little validation
-          hawaiiPizza.qty = hawaiiPizza.qty + 1;
-          updateCart3();  
-		}
-		});
-
-
-$( "#removeHawaiiPizza" ).click(function() {
-		if(hawaiiPizza.qty > 0)	
-			hawaiiPizza.qty = hawaiiPizza.qty - 1;
-			updateCart3();            
-			});
-
-// function to update the cart.
-function updateCart3(){
-       var content3 = '';
-      if (hawaiiPizza.qty >= 1) { // check to see if we should add it or not
-          content3 = content3 + " Price " + hawaiiPizza.qty * hawaiiPizza.price;
-          
-           // select the hawaiiPizza Qty box and add the new number of hawaiiPizza selected.
-           $( "#hawaiiPizzaQty" ).val(hawaiiPizza.qty);
-			}
-      // display the content variable in the myCart div.
-       $( "#myCart3" ).html(content3);
-		if(hawaiiPizza.qty == 0){    
-          $( "#myCart3" ).hide();
-          $( "#hawaiiPizzaQty" ).hide();
-			} else {
-			$( "#myCart3" ).show();
-			$( "#hawaiiPizzaQty" ).show();
-			}
-		}	
-$( "#viewCart3" ).click(function() {
-       updateCart3();  
-  });
-  
-  
-  
-  //---------------------------DRINKS---------------------------- 
-									$('[id^=addProduct]').click(function(){
-										var p = $(this).attr('productname'); 		// find out what was clicked
-										var arrayLength = prod.length;
-											for (var i = 0; i < arrayLength; i++) { // loop over the products
-        
-										var pro = prod[i] 							// get one product at a time
-										console.log(pro.name);
-											if(p == pro.name) {
-											console.log(pro.qty);
-											pro.qty = pro.qty + 1;
-            
-										$( "#"+pro.name+"Qty" ).val(pro.qty);
-										}
-							//Do something 
-									}    
-									});
-
-									
-									$('[id^=removeProduct]').click(function(){
-										var p = $(this).attr('productname');
-										//	
-									var arrayLength = prod.length;
-											for (var i = 0; i < arrayLength; i++) { // loop over the products
-									
-										var pro = prod[i] 							// get one product at a time
-										console.log(pro.name);
-											if(p == pro.name) {
-											console.log(pro.qty);
-												if(pro.qty > 0 ){
-												pro.qty = pro.qty - 1;
-											//
-										$( "#"+pro.name+"Qty" ).val(pro.qty);
-										} }
-							//Do something 
-									}    								
-									});
-
-									
-								
-										
-// ---------------------------SAUCE-------------------------------------- 										
-								
-									
-									
-									
-									<!-- $(document).ready(function(){ -->
-										<!-- $("select.sauce").change(function(){ -->
-										<!-- var selectedSauce = $(this).children("option:selected").val(); -->
-							<!-- alert("You have selected the sauce - " + selectedSauce); -->
-										
-										<!-- }); -->
-										<!-- }); -->
-									
-// ------------------------------------------------------------------------------------- 
-// -------------------------------------------------------------------------------------
-//ORDER DETAILS
-//
-$("#placeOrder").click(function(){
-     
-//	 var order = $("#orderDetails").html();
-//     alert(order);
-	 
-	 var addAddress = '';       //here is content
-				//adding number of products
-		addAddress = addAddress + '<b> Dont know where is showing up</b>';
-	
-								var dip = $("input[id^=sauce]").each(function() {
-									var p = $(this).attr('productname'); 		// find out what was clicked
-										var arrayLength = prod.length;
-											for (var i = 0; i < arrayLength; i++) {
-									if(this.checked == true) {
-										 // loop over the products
-										var pro = prod[i] 							// get one product at a time
-										console.log(pro.name);
-											if(p == pro.name) {
-											console.log(pro.qty);
-											pro.qty = 1;           
-										$( "#"+pro.name+"Qty" ).val(pro.qty);
-										}
-										
-							//IF is not checked!!!!!! 
-										}
-										if(this.checked != true) {
-										 // loop over the products
-										var pro = prod[i] 							// get one product at a time
-										console.log(pro.name);
-											if(p == pro.name) {
-											console.log(pro.qty);
-											pro.qty = 0;
-            
-										$( "#"+pro.name+"Qty" ).val(pro.qty);
-										}
-							//Do something 
-									}		
-									}
-									});
-		
-	 var address = $("#location").val();
-		addAddress =  addAddress + '</br><b> Additional location </b></br>';
-		addAddress = addAddress + address + '</br>';	
-  //Adding the total of items
-  var total='';
-		total = '<b>Location: </b> '+ address + this.value + '</br>' + '<b>TOTAL PRICE: </b>' + (cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
-					 + cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
-    $("#orderDetails").html(total);
-});
-
-					//--------------------------- Check Out ----------------------
-									function checkout(){
-										var ser = '';
-										var arrayLength = prod.length;
-											for (var i = 0; i < arrayLength; i++) { // loop over the products
-        
-										var pro = prod[i] // get one product at a time
-										console.log(pro.name);
-										console.log(pro.qty);
-        
-									ser = ser + pro.name + '-' + pro.qty + '=';
-							//
-									}
-									var un = $( "#login_username" ).val();
-										console.log(un);
-									var address = $("#location").val();
-										console.log(address);
-									 var total='';
-										total =(cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
-												+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
-							// jQuery post and send the set.
-							//need to read from db the proper fields
-									$.post( "/catchTheCart", { placedby: un, ser: ser, location: address, topay: total }).done(function( data ) {
-									alert( "Check Out LOADED " + data );
-									});
-									
-									console.log(ser);
-									}
-								
-//$.post( "/backend", { type: "login", username:un, password:pw})
-//     .done(function( data ) {
-//        alert( "Data Loaded: " + data );
-
-
-
-
-//-----------------------------------------------------------------
-//------------- DRIVER PAGE ----------------------------------------
-
-$(document).ready(function () {
-    
-    // Get Location 
-    navigator.geolocation.getCurrentPosition(success, error);
-
-    function success(pos) {
-        var lat = pos.coords.latitude;
-        var long = pos.coords.longitude;
-        weather(lat, long);
-    }
-
-    function error() {
-        console.log('Location needs to be ON!');
-    }
-
-    // Call Weather
-    function weather(lat, long) {
-        var URL = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
-
-        $.getJSON(URL, function(data) {
-            updateDOM(data);
-        });
-    }
-
-    // Update Dom
-    function updateDOM(data) {
-        var city = data.name;
-        var temp = Math.round(data.main.temp_max);
-        var desc = data.weather[0].description;
-        var icon = data.weather[0].icon;
-
-        $('#city').html(city);
-        $('#temp').html(temp);
-        $('#desc').html(desc);
-        $('#icon').attr('src', icon);
-    }
-});
-
-
-// DRIVER retriving the orders
-//
-//  $('#getOrders').click(function() {
-// 	var retrieveOrders = '';
-// 		total = $.get( "viewAll").done(function( data ) {
-// 									alert( "Check Out LOADED " + data );
-// 									});
-//
-//
-// 					$('#showOrders').html(retrieveOrders);
-// 					});
-//
-// //  $("#orderDetails").html(total);
-//
-
-// -----------------------------------------------------
-// ADMIN FUNCTIONS
-
-
-//   ----------- END OF ADMIN
-</script>
-
-
-
-<!----------------------  -------------------------------->
-<!--       DRIVER PAGE   -->
-<div data-role="page" id="driver" data-theme="a">
-       <div data-role="header">
-		<h1>Driver</h1>
-      </div><!-- /header -->
-						<div>
-						<div style="background-color: #922B21; color: #ECF0F1; height: 90px">
-										<!---- Top right Position  ------>
-										<div id="topright" href="#" style="text-align: center;">					
-											<div class="container" style="background-color: #FDEBD0; color: #224983">
-											<h4 id="city" style="text-align: center;" >City</h4>
-												<img src="" alt="icon" id="icon">											
-												<span>&#176;</span>
-												<h2 id="temp"><strong> temp</strong></h2> 
-												<h3 id="desc"><em>Sunny</em></h3>
-										</div>  <!-- Temperature container --->
-										</div>		<!-- top right position --->		
-	
-						<h2>Orders</h2>
-						<p>Welcome driver </p>
-						</div>
-	
-		<a href="#" data-role="button" data-inline="true" data-icon="star" id="getOrders" style="margin-left: 100px">See Orders</a>
-		<div class="showOrders" id="showOrders" style="width:450px; margin:0 auto;">
-							<h5 style="margin:0"><em>-------------</em></h5><br>				
-						</div>
-
-						<form action="viewAll" method="post">
-							<input type="submit" value="Run me now!">
-						</form>
-
-
-
-							<div>
-								<h2>TESTING</h2>
-
-
-							</div>
-
-	</div><!-- /content -->
-</div>  <!-- End Of DRIVER PAGE -->
-
-
-
-<!----------------------  -------------------------------->
-<!----------------------  -------------------------------->
-                                    <!--       Admin PAGE   -->
-                                    <div data-role="page" id="admin" data-theme="a">
-                                        <div class="container">
-
-
-
-{#                                                <h3>VIEW POSTS</h3>#}
-
-{#                                            <table class="table table-striped table-hover ">#}
-{#                                             <thead>#}
-{#                                             <tr>#}
-{#                                                    <th>ID</th>#}
-{#                                                    <th>PlacedBy</th >#}
-{#                                                    <th>Summary</th>#}
-{#                                                    <th>Destination</th>#}
-{#                                                    <th>total price</th>#}
-{#                                             </tr>#}
-
-
-{#                                             </thead>#}
-
-{#                                                <tbody>#}
-
-{#                                                    <tr>#}
-{#														{%   for orders in products %}#}
-{#                                                        <td>{{ product.placedby }}</td>#}
-{#														{% endfor %}#}
-{#                                                        <td>{{ products.placedby }}</td>#}
-{#                                                        <td>{{ post.description }}</td>#}
-{#                                                        <td >{{ post.category }}</td >#}
-{#                                                        <td >#}
-{#                                                            <a href="" class="btn btn-primary">View</a>#}
-{#                                                            <a href="" class="btn btn-success">Edit</a>#}
-{#                                                            <a href="" class="btn btn-danger">Delete</a>#}
-{#                                                        </td>#}
-{#                                                    </tr>#}
-
-
-{#                                                </tbody>#}
-{#                                            </table>#}
-
-{#                                        </div>#}
-
-
-
-
-
-
-
-                                    </div>  <!-- END OF ADMIN PAGE    -->
-<!----------------------------------  ------------------------------------->
-
-
-
-
-
-
-<!----------------------  -------------------------------->
-<!--      REGISTRATION PAGE   -->
-<div data-role="page" id="register" data-theme="a">
-
-       <div data-role="header">
-		<h1 text-align=center>Register</h1>
-      </div><!-- /header -->
-
-      <div role="main" class="ui-content">
-		
-      <table align="center">  
-	  <tr>
-		<td><h2>Register</h2></td>
-		</tr>
-	  <tr>
-	  <td>Username</td>
-	  <td><input type="text" name="username" id="username" value=""></td>
-	  </tr>
-      <tr>
-	  <td>Password</td>
-	  <td><input type="text" name="pass" id="pass" value=""></td>
-	  </tr>
- <!--       AccType <input type="text" name="acctype" id="acctype" value="">     -->
-	<tr>	
-		<td><label for="acctype">Acount Type</label></td>
-				<td>
-    				<select name="acctype" id="acctype">
-        				<option>Choose...</option>
-        			<optgroup label="Types of Account">
-            			<option value="Driver">Driver</option>
-            			<option value="Customer">Customer</option>
-            			<option value="Admin">Admin</option>  
-        			</optgroup>
-    				</select>
-			Costumer
-				</td>
-	</tr>
-       <tr>
-			<td colspan=2><button class="ui-btn" id="registerButton">Submit</button></td>
-	   </tr>
-	   </table>
-	
-	</div><!-- /content -->
-</div>
-</body>
-{#{% endblock %}#}
-<script>
-//
-// LOGIN
-//
+	//--------------------------------------------------------------------------
+	//LOGIN
+	//--------------------------------------------------------------------------
 $( "#loginButton" ).click(function() {
   
       var un = $( "#login_username" ).val();
@@ -898,7 +414,7 @@ $( "#loginButton" ).click(function() {
             window.location="/index#customer";
         }
         else if(data == 'Driver'){
-            window.location="/index#driver";
+            window.location="/driver";
         }
         else if(data == 'Admin') {
             window.location = "/post";
@@ -909,10 +425,11 @@ $( "#loginButton" ).click(function() {
 });
 </script>
 
+
 <script>
-//
-// REGISTER
-//
+	//--------------------------------------------------------------------------
+	//REGISTER
+	//--------------------------------------------------------------------------
 $( "#registerButton" ).click(function() {
   
       var un = $( "#username" ).val();
@@ -933,7 +450,7 @@ $( "#registerButton" ).click(function() {
 				}
 				else if(at == 'Driver'){
 				alert( "YOU HAVE REGISTERED AS A DRIVER" );
-				window.location="/index#driver";
+				window.location="/driver";
 				}
                 else if(at == 'Admin'){
                 alert( "YOU HAVE REGISTERED AS A ADMIN" );
@@ -943,5 +460,349 @@ $( "#registerButton" ).click(function() {
 });
 </script>
 
+
+<script>
+	//--------------------------------------------------------------------------
+	//CUSTOMER
+	//--------------------------------------------------------------------------
+
+	// template for a product
+	class product {
+		constructor(name, price, qty) {
+			this.name = name
+			this.price = price;
+			this.qty = qty;
+		}
+	}
+	// define our products
+	cheesePizza = new product("cheesePizza", 12, 0);
+	bbqPizza = new product("bbqPizza", 15, 0);
+	hawaiiPizza = new product("hawaiiPizza", 14, 0);
+	buffaloPizza = new product("buffaloPizza", 16, 0);
+	cola = new product("cola", 1.5, 0);
+	fanta = new product("fanta", 1.5, 0);
+	sprite = new product("sprite", 1.5, 0);
+	drPepper = new product("drPepper", 1.5, 0);
+	garlicSauce = new product("garlicSauce", 2, 0);
+	sweetSauce	= new product("sweetSauce", 2, 0);
+	bbqSauce	= new product("bbqSauce", 2, 0);
+
+	var prod = [];
+	prod.push(cheesePizza);
+	prod.push(bbqPizza);
+	prod.push(hawaiiPizza);
+	prod.push(buffaloPizza);
+	prod.push(cola);
+	prod.push(fanta);
+	prod.push(sprite);
+	prod.push(drPepper);
+	prod.push(garlicSauce);
+	prod.push(sweetSauce);
+	prod.push(bbqSauce);
+
+	//--------------------------------------------------------
+	//define BUFFALO PIZZA
+	$( "#addBuffaloPizza" ).click(function() {
+		if(buffaloPizza.qty < 10) { // add a little validation
+			buffaloPizza.qty = buffaloPizza.qty + 1;
+			updateCart1();
+		}
+	});
+	$( "#removeBuffaloPizza" ).click(function() {
+		if(buffaloPizza.qty > 0)
+			buffaloPizza.qty = buffaloPizza.qty - 1;
+		updateCart1();
+	});
+
+
+	// function to update the cart.
+	function updateCart1(){
+		var content1 = '';
+		if (buffaloPizza.qty >= 1) { // check to see if we should add it or not
+			content1 = content1 + " Price " + buffaloPizza.qty * buffaloPizza.price;
+			// select the buffaloPizza Qty box and add the new number of cheesePizza selected.
+			$( "#buffaloPizzaQty" ).val(buffaloPizza.qty);
+		}
+
+		// display the content variable in the myCart div.
+		$( "#myCart1" ).html(content1);
+		if(buffaloPizza.qty == 0){
+			$( "#myCart1" ).hide();
+			$( "#buffaloPizzaQty" ).hide();
+		} else {
+			$( "#myCart1" ).show();
+			$( "#buffaloPizzaQty" ).show();
+		}
+	}
+
+	$( "#viewCart1" ).click(function() {
+		updateCart1();
+	});
+
+
+
+
+	//---------------------------------------------------
+	//define BBQ PIZZA
+	$( "#addBbqPizza" ).click(function() {
+		if(bbqPizza.qty < 10) { // add a little validation
+			bbqPizza.qty = bbqPizza.qty + 1;
+			updateCart();
+		}
+	});
+
+
+	$( "#removeBbqPizza" ).click(function() {
+		if(bbqPizza.qty > 0)
+			bbqPizza.qty = bbqPizza.qty - 1;
+		updateCart();
+	});
+
+	// function to update the cart.
+	function updateCart(){
+		var content = '';
+
+		if (bbqPizza.qty >= 1) { // check to see if we should add it or not
+			content = content + " Price " + bbqPizza.qty * bbqPizza.price;
+
+			// select the cookie Qty box and add the new number of cookies selected.
+			$( "#bbqPizzaQty" ).val(bbqPizza.qty);
+		}
+		// display the content variable in the myCart div.
+		$( "#myCart" ).html(content);
+
+		if(bbqPizza.qty == 0){
+			$( "#myCart" ).hide();
+			$( "#bbqPizzaQty" ).hide();
+		} else {
+			$( "#myCart" ).show();
+			$( "#bbqPizzaQty" ).show();
+		}
+	}
+
+
+
+	//---------------------------------------------------------
+	// CHEESE PIZZA
+	$( "#addCheesePizza" ).click(function() {
+		if(cheesePizza.qty < 10) { // add a little validation
+			cheesePizza.qty = cheesePizza.qty + 1;
+			updateCart2();
+		}
+	});
+
+	$( "#removeCheesePizza" ).click(function() {
+		if(cheesePizza.qty > 0)
+			cheesePizza.qty = cheesePizza.qty - 1;
+		updateCart2();
+	});
+
+	// function to update the cart.
+	function updateCart2(){
+		var content2 = '';
+		if (cheesePizza.qty >= 1) { // check to see if we should add it or not
+			content2 = content2 + " Price " + cheesePizza.qty * cheesePizza.price;
+			// select the cheesePizza Qty box and add the new number of cheesePizza selected.
+			$( "#cheesePizzaQty" ).val(cheesePizza.qty);
+		}
+
+		// display the content variable in the myCart div.
+		$( "#myCart2" ).html(content2);
+		if(cheesePizza.qty == 0){
+			$( "#myCart2" ).hide();
+			$( "#cheesePizzaQty" ).hide();
+		} else {
+			$( "#myCart2" ).show();
+			$( "#cheesePizzaQty" ).show();
+		}
+	}
+
+	$( "#viewCart2" ).click(function() {
+		updateCart2();
+	});
+
+
+	//
+	// Hawaii PIZZA
+	$( "#addHawaiiPizza" ).click(function() {
+		if(hawaiiPizza.qty < 10) { // add a little validation
+			hawaiiPizza.qty = hawaiiPizza.qty + 1;
+			updateCart3();
+		}
+	});
+
+
+	$( "#removeHawaiiPizza" ).click(function() {
+		if(hawaiiPizza.qty > 0)
+			hawaiiPizza.qty = hawaiiPizza.qty - 1;
+		updateCart3();
+	});
+
+	// function to update the cart.
+	function updateCart3(){
+		var content3 = '';
+		if (hawaiiPizza.qty >= 1) { // check to see if we should add it or not
+			content3 = content3 + " Price " + hawaiiPizza.qty * hawaiiPizza.price;
+
+			// select the hawaiiPizza Qty box and add the new number of hawaiiPizza selected.
+			$( "#hawaiiPizzaQty" ).val(hawaiiPizza.qty);
+		}
+		// display the content variable in the myCart div.
+		$( "#myCart3" ).html(content3);
+		if(hawaiiPizza.qty == 0){
+			$( "#myCart3" ).hide();
+			$( "#hawaiiPizzaQty" ).hide();
+		} else {
+			$( "#myCart3" ).show();
+			$( "#hawaiiPizzaQty" ).show();
+		}
+	}
+	$( "#viewCart3" ).click(function() {
+		updateCart3();
+	});
+
+
+
+	//---------------------------DRINKS----------------------------
+	$('[id^=addProduct]').click(function(){
+		var p = $(this).attr('productname'); 		// find out what was clicked
+		var arrayLength = prod.length;
+		for (var i = 0; i < arrayLength; i++) { // loop over the products
+
+			var pro = prod[i] 							// get one product at a time
+			console.log(pro.name);
+			if(p == pro.name) {
+				console.log(pro.qty);
+				pro.qty = pro.qty + 1;
+
+				$( "#"+pro.name+"Qty" ).val(pro.qty);
+			}
+			//Do something
+		}
+	});
+
+
+	$('[id^=removeProduct]').click(function(){
+		var p = $(this).attr('productname');
+		//
+		var arrayLength = prod.length;
+		for (var i = 0; i < arrayLength; i++) { // loop over the products
+
+			var pro = prod[i] 							// get one product at a time
+			console.log(pro.name);
+			if(p == pro.name) {
+				console.log(pro.qty);
+				if(pro.qty > 0 ){
+					pro.qty = pro.qty - 1;
+					//
+					$( "#"+pro.name+"Qty" ).val(pro.qty);
+				} }
+			//Do something
+		}
+	});
+
+
+
+
+
+	// -------------------------------------------------------------------------------------
+
+	//ORDER DETAILS
+	//
+	$("#placeOrder").click(function(){
+
+//	 var order = $("#orderDetails").html();
+//     alert(order);
+
+		var addAddress = '';       //here is content
+		//adding number of products
+		addAddress = addAddress + '<b> Dont know where is showing up</b>';
+
+		var dip = $("input[id^=sauce]").each(function() {
+			var p = $(this).attr('productname'); 		// find out what was clicked
+			var arrayLength = prod.length;
+			for (var i = 0; i < arrayLength; i++) {
+				if(this.checked == true) {
+					// loop over the products
+					var pro = prod[i] 							// get one product at a time
+					console.log(pro.name);
+					if(p == pro.name) {
+						console.log(pro.qty);
+						pro.qty = 1;
+						$( "#"+pro.name+"Qty" ).val(pro.qty);
+					}
+
+					//IF is not checked!!!!!!
+				}
+				if(this.checked != true) {
+					// loop over the products
+					var pro = prod[i] 							// get one product at a time
+					console.log(pro.name);
+					if(p == pro.name) {
+						console.log(pro.qty);
+						pro.qty = 0;
+
+						$( "#"+pro.name+"Qty" ).val(pro.qty);
+					}
+					//Do something
+				}
+			}
+		});
+
+		var address = $("#location").val();
+		addAddress =  addAddress + '</br><b> Additional location </b></br>';
+		addAddress = addAddress + address + '</br>';
+		//Adding the total of items
+		var total='';
+		total = '<b>Location: </b> '+ address + this.value + '</br>' + '<b>TOTAL PRICE: </b>' + (cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
+				+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
+		$("#orderDetails").html(total);
+	});
+
+
+
+
+
+
+	//--------------------------- Check Out ----------------------
+	function checkout(){
+		var ser = '';
+		var arrayLength = prod.length;
+		for (var i = 0; i < arrayLength; i++) { // loop over the products
+
+			var pro = prod[i] // get one product at a time
+			console.log(pro.name);
+			console.log(pro.qty);
+
+			ser = ser + pro.name + '-' + pro.qty + '=';
+			//
+		}
+
+
+
+		var today = new Date();
+		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		var timeStamp = date+' '+time;
+
+
+		var un = $( "#login_username" ).val();
+		console.log(un);
+		var address = $("#location").val();
+		console.log(address);
+		var total='';
+		total =(cheesePizza.qty * cheesePizza.price + bbqPizza.qty * bbqPizza.price + hawaiiPizza.qty * hawaiiPizza.price + buffaloPizza.qty * buffaloPizza.price
+				+ cola.qty * cola.price  + fanta.qty * fanta.price + sprite.qty * sprite.price + drPepper.qty * drPepper.price + garlicSauce.qty*garlicSauce.price + bbqSauce.qty * bbqSauce.price + sweetSauce.qty * sweetSauce.price);
+		// jQuery post and send the set.
+		//need to read from db the proper fields
+		$.post( "/catchTheCart", { placedby: un, ser: ser, location: address, topay: total, time: timeStamp }).done(function( data ) {
+			alert( "Check Out LOADED " + data );
+		});
+
+		console.log(ser);
+
+	}
+
+</script>
 
 </html>

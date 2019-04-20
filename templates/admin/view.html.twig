@@ -8,14 +8,15 @@
 
 
     <div class="list-group">
-        <a href="#" class="list-group-item active">Item</a>
+        <a href="#" class="list-group-item active">Order</a>
 
-            {% for item in itemView %}
-        <p class="list-group-item">{{ item.placedby }}</p>
-        <p class="list-group-item">{{ item.details }}</p>
-        <p class="list-group-item">{{ item.location }}</p>
-        <p class="list-group-item">{{ item.topay }}</p>
-            {% endfor %}
+
+        <p class="list-group-item">{{ post.placedby }}</p>
+        <p class="list-group-item">{{ post.details }}</p>
+        <p class="list-group-item">{{ post.location }}</p>
+        <p class="list-group-item">{{ post.topay }}</p>
+        <p class="list-group-item">{{ post.time }}</p>
+
         <p class="list-group-item"><a href="{{ absolute_url(asset('')) }}post" class="btn btn-success btn-sm">Back</a></p>
     </div>
 

@@ -1,0 +1,44 @@
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DRIVER VIEW ITEM</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+        src="http://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div data-role="navbar">
+    <ul>
+        <li><a href="#" class="ui-btn-active">VIEW ITEM</a></li>
+    </ul>
+</div><!-- /navbar -->
+
+<div class="container">
+
+
+    <div style="text-align: center";>
+        <a href="#" class="list-group-item active">Order</a>
+
+
+        <p class="list-group-item">{{ post.placedby }}</p>
+        <p class="list-group-item">{{ post.details }}</p>
+        <p class="list-group-item">{{ post.location }}</p>
+        <p class="list-group-item">{{ post.topay }}</p>
+        <p class="list-group-item">{{ post.time }}</p>
+        <div style="width: 150px; padding-left: 45px; padding-top: 20px">
+            <a href="{{ absolute_url(asset('')) }}driver"><button style="color: darkgreen">Back</button></a>
+        </div>
+        </div>
+
+</div>
+</body>
